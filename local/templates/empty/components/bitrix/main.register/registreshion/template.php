@@ -57,7 +57,6 @@ if ($arResult["SHOW_SMS_FIELD"] == true) {
 									case "PASSWORD": ?>
 										<input name='REGISTER[<?= $FIELD ?>]' value="<?= $arResult["VALUES"][$FIELD] ?>" class="form-control <?= !empty($arResult["ERRORS"][$FIELD]) ? " is-invalid" : "" ?>" placeholder="<?= GetMessage("REGISTER_FIELD_" . $FIELD) ?>" type="password" />
 										<div class="invalid-feedback"><?= $arResult["ERRORS"][$FIELD] ?></div>
-										<div class="form-text text-muted"><?= $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"]; ?></div>
 										<? break; ?>
 									<?
 									case "CONFIRM_PASSWORD": ?>
@@ -71,6 +70,9 @@ if ($arResult["SHOW_SMS_FIELD"] == true) {
 										<? break; ?>
 								<? endswitch; ?>
 							</div>
+							<? if ($FIELD === "PASSWORD") : ?>
+								<div class="form-text text-muted"> <?= $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"]; ?> </div>
+							<? endif ?>
 						</div>
 					<? endforeach ?>
 
@@ -88,7 +90,7 @@ if ($arResult["SHOW_SMS_FIELD"] == true) {
 						<input type="submit" name="register_submit_button" class="btn btn-primary btn-block" value="<?= GetMessage("AUTH_REGISTER") ?>" />
 					</div>
 
-					<p class="text-center">Уже зарегистрированы? <a href="auth.html">Авторизоваться</a></p>
+					<p class="text-center">Уже зарегистрированы? <a href="/auth/index.php">Авторизоваться</a></p>
 				</form>
 			</div>
 		</div>

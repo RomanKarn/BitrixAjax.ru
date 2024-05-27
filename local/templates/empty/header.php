@@ -43,7 +43,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	<div class="main-wrapper" id="app">
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="index.php">Обжорозаврик <i class="fas fa-dragon"></i></a>
+				<a class="navbar-brand" href="/index.php">Обжорозаврик <i class="fas fa-dragon"></i></a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -70,8 +70,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 						); ?>
 
 						<li class="nav-item">
-							<a class="btn btn-secondary" href="auth.html">Войти</a>
-							<a class="btn btn-outline-secondary" href="register.html">Зарегистрироваться</a>
+							<a class="btn btn-secondary" href="/auth/index.php">Войти</a>
+							<a class="btn btn-outline-secondary" href="/auth/registrashion.php">Зарегистрироваться</a>
 						</li>
 
 						<li class="nav-item dropdown">
@@ -79,7 +79,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 								<img src="images/avartar-dinosaur-100.png" class="rounded-circle bg-white avatar-img" alt="Аватар">
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-								<a class="dropdown-item" href="#">Личный кабинет</a>
+								<a class="dropdown-item" href="/auth/personal.php">Личный кабинет</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Выйти</a>
 							</div>
