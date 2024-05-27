@@ -1,16 +1,21 @@
 <?
-define("NEED_AUTH", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-
-if (isset($_REQUEST["backurl"]) && strlen($_REQUEST["backurl"])>0) 
-	LocalRedirect($backurl);
-
 $APPLICATION->SetTitle("Авторизация");
-?>
-<p>Вы зарегистрированы и успешно авторизовались.</p>
- 
-<p>Используйте административную панель в верхней части экрана для быстрого доступа к функциям управления структурой и информационным наполнением сайта. Набор кнопок верхней панели отличается для различных разделов сайта. Так отдельные наборы действий предусмотрены для управления статическим содержимым страниц, динамическими публикациями (новостями, каталогом, фотогалереей) и т.п.</p>
- 
-<p><a href="<?=SITE_DIR?>">Вернуться на главную страницу</a></p>
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+?><?$APPLICATION->IncludeComponent(
+	"bitrix:system.auth.form",
+	"",
+	Array(
+		"FORGOT_PASSWORD_URL" => "/auth/forget.php",
+		"PROFILE_URL" => "/auth/personal.php",
+		"REGISTER_URL" => "/auth/registrashion.php",
+		"SHOW_ERRORS" => "N"
+	)
+);?><?$APPLICATION->IncludeComponent(
+	"bitrix:system.auth.confirmation",
+	"",
+	Array(
+		"CONFIRM_CODE" => "confirm_code",
+		"LOGIN" => "login",
+		"USER_ID" => "confirm_user_id"
+	)
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
