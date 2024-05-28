@@ -100,12 +100,16 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 		<? if ($APPLICATION->GetCurPageParam() !== "/") : ?>
 			<div class="container">
 
-				<h1 class="mt-4 mb-3">Динозавры</h1>
+				<h1 class="mt-4 mb-3"><?= $APPLICATION->ShowTitle(false) ?></h1>
 
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item">
-						<a href="index.html">Главная</a>
-					</li>
-					<li class="breadcrumb-item active">Динозавры</li>
-				</ol>
+				<? $APPLICATION->IncludeComponent(
+					"bitrix:breadcrumb",
+					"breadcrumb",
+					array(
+						"PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+						"SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
+						"START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
+					),
+					false
+				); ?>
 			<? endif ?>
