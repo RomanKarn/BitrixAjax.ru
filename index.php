@@ -1,10 +1,10 @@
 <?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-$APPLICATION->SetTitle("Главная");
+$APPLICATION->SetTitle("О динозаврах");
 ?>
 <? $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "slider_main_page",
+    "duno_catalog_list_main_page",
     array(
         "ACTIVE_DATE_FORMAT" => "d.m.Y",    // Формат показа даты
         "ADD_SECTIONS_CHAIN" => "N",    // Включать раздел в цепочку навигации
@@ -17,7 +17,7 @@ $APPLICATION->SetTitle("Главная");
         "CACHE_GROUPS" => "N",    // Учитывать права доступа
         "CACHE_TIME" => "36000000",    // Время кеширования (сек.)
         "CACHE_TYPE" => "N",    // Тип кеширования
-        "CHECK_DATES" => "N",    // Показывать только активные на данный момент элементы
+        "CHECK_DATES" => "Y",    // Показывать только активные на данный момент элементы
         "DETAIL_URL" => "",    // URL страницы детального просмотра (по умолчанию - из настроек инфоблока)
         "DISPLAY_BOTTOM_PAGER" => "N",    // Выводить под списком
         "DISPLAY_DATE" => "N",    // Выводить дату элемента
@@ -29,17 +29,16 @@ $APPLICATION->SetTitle("Главная");
             0 => "NAME",
             1 => "PREVIEW_TEXT",
             2 => "PREVIEW_PICTURE",
-            3 => "DETAIL_TEXT",
-            4 => "",
+            3 => "",
         ),
         "FILTER_NAME" => "",    // Фильтр
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",    // Скрывать ссылку, если нет детального описания
-        "IBLOCK_ID" => "1",    // Код информационного блока
+        "IBLOCK_ID" => "2",    // Код информационного блока
         "IBLOCK_TYPE" => "content",    // Тип информационного блока (используется только для проверки)
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",    // Включать инфоблок в цепочку навигации
-        "INCLUDE_SUBSECTIONS" => "N",    // Показывать элементы подразделов раздела
+        "INCLUDE_SUBSECTIONS" => "Y",    // Показывать элементы подразделов раздела
         "MESSAGE_404" => "",    // Сообщение для показа (по умолчанию из компонента)
-        "NEWS_COUNT" => "4",    // Количество новостей на странице
+        "NEWS_COUNT" => "6",    // Количество новостей на странице
         "PAGER_BASE_LINK_ENABLE" => "N",    // Включить обработку ссылок
         "PAGER_DESC_NUMBERING" => "N",    // Использовать обратную навигацию
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",    // Время кеширования страниц для обратной навигации
@@ -58,7 +57,7 @@ $APPLICATION->SetTitle("Главная");
         "SET_LAST_MODIFIED" => "N",    // Устанавливать в заголовках ответа время модификации страницы
         "SET_META_DESCRIPTION" => "N",    // Устанавливать описание страницы
         "SET_META_KEYWORDS" => "N",    // Устанавливать ключевые слова страницы
-        "SET_STATUS_404" => "N",    // Устанавливать статус 404
+        "SET_STATUS_404" => "Y",    // Устанавливать статус 404
         "SET_TITLE" => "N",    // Устанавливать заголовок страницы
         "SHOW_404" => "N",    // Показ специальной страницы
         "SORT_BY1" => "SORT",    // Поле для первой сортировки новостей
@@ -69,4 +68,68 @@ $APPLICATION->SetTitle("Главная");
     ),
     false
 ); ?>
+<div class="row mb-4 justify-content-center">
+    <div class="col-md-4">
+        <a class="btn btn-lg btn-outline-primary btn-block" href="/dinozavry/">Все динозавры</a>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-lg-6">
+        <h2>
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:main.include",
+                "include_main_page",
+                array(
+                    "AREA_FILE_SHOW" => "file",    // Показывать включаемую область
+                    "AREA_FILE_SUFFIX" => "inc",
+                    "EDIT_TEMPLATE" => SITE_TEMPLATE_PATH . "/include/main/",    // Шаблон области по умолчанию
+                    "PATH" => SITE_TEMPLATE_PATH . "/include/main/titel.php",    // Путь к файлу области
+                ),
+                false
+            ); ?>
+            <i class="fas fa-dragon"></i>
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:main.include",
+                "include_main_page",
+                array(
+                    "AREA_FILE_SHOW" => "file",    // Показывать включаемую область
+                    "AREA_FILE_SUFFIX" => "inc",
+                    "EDIT_TEMPLATE" => SITE_TEMPLATE_PATH . "/include/main/",    // Шаблон области по умолчанию
+                    "PATH" => SITE_TEMPLATE_PATH . "/include/main/titel2.php",    // Путь к файлу области
+                ),
+                false
+            ); ?>
+
+        </h2>
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:main.include",
+            "include_main_page",
+            array(
+                "AREA_FILE_SHOW" => "file",    // Показывать включаемую область
+                "AREA_FILE_SUFFIX" => "inc",
+                "EDIT_TEMPLATE" => SITE_TEMPLATE_PATH . "/include/main/",    // Шаблон области по умолчанию
+                "PATH" => SITE_TEMPLATE_PATH . "/include/main/text.php",    // Путь к файлу области
+            ),
+            false
+        ); ?>
+    </div>
+    <div class="col-lg-6 text-center">
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:main.include",
+            "include_main_page",
+            array(
+                "AREA_FILE_SHOW" => "file",    // Показывать включаемую область
+                "AREA_FILE_SUFFIX" => "inc",
+                "EDIT_TEMPLATE" => SITE_TEMPLATE_PATH . "/include/main/",    // Шаблон области по умолчанию
+                "PATH" =>  SITE_TEMPLATE_PATH . "/include/main/foto.php",    // Путь к файлу области
+            ),
+            false
+        ); ?>
+    </div>
+</div>
+<hr>
+
+
 <? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

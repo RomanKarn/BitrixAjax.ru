@@ -1,0 +1,1 @@
+<img width="433" src="/local/templates/empty/assets/images/zavri.jpg" height="431">

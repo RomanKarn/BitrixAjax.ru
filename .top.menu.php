@@ -20,6 +20,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"Приют динозавров", 
+		"/priyut-dinozavrov/", 
+		Array(), 
+		Array(), 
+		"" 
 	)
 );
 ?>

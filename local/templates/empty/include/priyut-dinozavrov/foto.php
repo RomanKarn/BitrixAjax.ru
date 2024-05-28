@@ -1,0 +1,1 @@
+<img class="img-fluid rounded mb-4" src="/local/templates/empty/assets/images/dino_at_home.jpg">
