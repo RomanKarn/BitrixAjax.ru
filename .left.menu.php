@@ -6,6 +6,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"Вопросы и ответы", 
+		"/questions-answers/", 
+		Array(), 
+		Array(), 
+		"" 
 	)
 );
 ?>
