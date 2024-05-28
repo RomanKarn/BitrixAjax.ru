@@ -37,6 +37,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 </head>
 
 <body>
+
 	<div id="panel">
 		<? $APPLICATION->ShowPanel(); ?>
 	</div>
@@ -68,24 +69,43 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 							),
 							false
 						); ?>
+						<? if (!($USER->IsAuthorized())) : ?>
+							<li class="nav-item">
+								<a class="btn btn-secondary" href="/auth/index.php">Войти</a>
+								<a class="btn btn-outline-secondary" href="/auth/registrashion.php">Зарегистрироваться</a>
+							</li>
+						<? else : ?>
+							<li class="nav-item">
+								<a class="btn btn-secondary" href="/auth/personal.php"><?= $USER->GetLogin() ?></a>
+							</li>
 
-						<li class="nav-item">
-							<a class="btn btn-secondary" href="/auth/index.php">Войти</a>
-							<a class="btn btn-outline-secondary" href="/auth/registrashion.php">Зарегистрироваться</a>
-						</li>
-
-						<li class="nav-item dropdown">
-							<a class="avatar-link nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="images/avartar-dinosaur-100.png" class="rounded-circle bg-white avatar-img" alt="Аватар">
-							</a>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-								<a class="dropdown-item" href="/auth/personal.php">Личный кабинет</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/?logout=yes&<?=bitrix_sessid_get()?>">Выйти</a> <!-- почему это работет -->
-							</div>
-						</li>
+						<? endif ?>
+						<? if ($USER->IsAuthorized()) : ?>
+							<li class="nav-item dropdown">
+								<a class="avatar-link nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img src="<?= CFile::GetPath($USER->GetParam("PERSONAL_PHOTO")) ?? SITE_TEMPLATE_PATH . "/assets/images/avartar-dinosaur-100.png" ?>" class="rounded-circle bg-white avatar-img" alt="Аватар">
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+									<a class="dropdown-item" href="/auth/personal.php">Личный кабинет</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/?logout=yes&<?= bitrix_sessid_get() ?>">Выйти</a> <!-- почему это работет -->
+								</div>
+							</li>
+						<? endif ?>
 					</ul>
 				</div>
 			</div>
-
 		</nav>
+
+		<? if ($APPLICATION->GetCurPageParam() !== "/") : ?>
+			<div class="container">
+
+				<h1 class="mt-4 mb-3">Динозавры</h1>
+
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index.html">Главная</a>
+					</li>
+					<li class="breadcrumb-item active">Динозавры</li>
+				</ol>
+			<? endif ?>
