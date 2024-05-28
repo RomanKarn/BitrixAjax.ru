@@ -100,7 +100,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 		<? if ($APPLICATION->GetCurPageParam() !== "/") : ?>
 			<div class="container">
 
-				<h1 class="mt-4 mb-3"><?= $APPLICATION->ShowTitle(false) ?></h1>
+				<h1 class="mt-4 mb-3"><?= $APPLICATION->ShowTitle(false,false) ?></h1>
 
 				<? $APPLICATION->IncludeComponent(
 					"bitrix:breadcrumb",
