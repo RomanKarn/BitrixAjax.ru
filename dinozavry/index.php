@@ -1,5 +1,5 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Динозавры");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news",
@@ -70,7 +70,7 @@ $APPLICATION->SetTitle("Динозавры");
 		"USE_RATING" => "N",
 		"USE_REVIEW" => "N",
 		"USE_RSS" => "N",
-		"USE_SEARCH" => "Y",
+		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N"
 	)
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
