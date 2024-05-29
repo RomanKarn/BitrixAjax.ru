@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Блог");
+
 ?><div class="row">
 	<div class="col-md-8">
 		<? $APPLICATION->IncludeComponent(
@@ -56,10 +57,10 @@ $APPLICATION->SetTitle("Блог");
 				"PREVIEW_TRUNCATE_LEN" => "",
 				"SEF_FOLDER" => "/blog/",
 				"SEF_MODE" => "Y",
-				"SEF_URL_TEMPLATES" => array("detail" => "#SECTION_CODE#/#ELEMENT_CODE#/", "news" => "", "section" => "#SECTION_CODE#/"),
+				"SEF_URL_TEMPLATES" => array("detail" => "#SECTION_CODE#/#ELEMENT_CODE#/", "news" => "", "search" => "search/", "section" => "#SECTION_CODE#/"),
 				"SET_LAST_MODIFIED" => "N",
 				"SET_STATUS_404" => "Y",
-				"SET_TITLE" => "N",
+				"SET_TITLE" => "Y",
 				"SHOW_404" => "N",
 				"SORT_BY1" => "ACTIVE_FROM",
 				"SORT_BY2" => "SORT",
@@ -72,7 +73,7 @@ $APPLICATION->SetTitle("Блог");
 				"USE_RATING" => "N",
 				"USE_REVIEW" => "N",
 				"USE_RSS" => "N",
-				"USE_SEARCH" => "N",
+				"USE_SEARCH" => "Y",
 				"USE_SHARE" => "N"
 			)
 		); ?>
@@ -81,12 +82,16 @@ $APPLICATION->SetTitle("Блог");
 		<div class="card mb-4">
 			<h5 class="card-header">Найти в блоге</h5>
 			<div class="card-body">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Поиск...">
-					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
-					</div>
-				</div>
+				<?php
+				$APPLICATION->IncludeComponent(
+					"bitrix:search.form",
+					"search_form_blog",
+					[
+						"PAGE" => "/blog/" . "search/"
+					],
+					$component,
+					['HIDE_ICONS' => 'Y']
+				); ?>
 			</div>
 		</div>
 		<div class="card my-4">

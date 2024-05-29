@@ -12,15 +12,18 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
 ?>
-<?$APPLICATION->IncludeComponent(
+<?
+$APPLICATION->IncludeComponent(
 	"bitrix:search.page",
-	"",
+	"search_dino_blog",
 	Array(
 		"CHECK_DATES" => $arParams["CHECK_DATES"]!=="N"? "Y": "N",
 		"arrWHERE" => Array("iblock_".$arParams["IBLOCK_TYPE"]),
 		"arrFILTER" => Array("iblock_".$arParams["IBLOCK_TYPE"]),
 		"SHOW_WHERE" => "N",
-		//"PAGE_RESULT_COUNT" => "",
+		"PAGE_RESULT_COUNT" => "10",
+		"RESTART" => "Y",
+		"PAGER_TEMPLATE" => "nav_page_dino",
 		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 		"CACHE_TIME" => $arParams["CACHE_TIME"],
 		"SET_TITLE" => $arParams["SET_TITLE"],
@@ -28,4 +31,3 @@ $this->setFrameMode(false);
 	),
 	$component
 );?>
-<p><a href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a></p>
