@@ -23,8 +23,16 @@ if ($USER->IsAuthorized()) {
         );
         if ($PRODUCT_ID = $el->Add($arLoadProductArray))
         {
+            $arFilter= ["ID"=>$_POST["ID_USER"]];
+            $userOb = CUser::GetList(array(),array(),$arFilter);
+            $user = $userOb->Fetch();
+
+            $arSrc = CFile::GetFileArray($user["PERSONAL_PHOTO"]);
+            
+            $icon["ICON"] = $arSrc["SRC"];
+            $login["LOGIN"] = $user["LOGIN"];
             $return["CODE"] = true;
-            $return["DATA"] = $arLoadProductArray;
+            $return["DATA"] = array_merge($arLoadProductArray,$login, $icon);
             die(json_encode($return));
         }
         else
@@ -36,6 +44,6 @@ if ($USER->IsAuthorized()) {
 }
 else
 {
-   
+    $return["DATA"] = "Вы не авторизованы";
     die(json_encode($return));
 }
