@@ -17,19 +17,22 @@ use Bitrix\Catalog\ProductTable;
 
 $this->setFrameMode(true);
 
-
 ?>
 <? if (!empty($arResult)) : ?>
 	<div class="row">
 		<? foreach ($arResult["ITEMS"] as $arItem) : ?>
 			<div class="col-lg-4 mb-4">
 				<div class="card h-100">
-					<h4 class="card-header"><?= $arItem["NAME"] ?? "" ?></h4>
+					<h4 class="card-header"><?= $arItem["NAME"] ?? "" ?> 
+					<p><?= $arItem["PRICES"]["PRISE"]["VALUE"] ?? "" ?> руб.</p>
+					</h4>
+					
 					<a href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>" data-caption="Маруся">
 						<img class="card-img-top p-2" src="<?= $arItem["PREVIEW_PICTURE"]["SRC"] ?? "" ?>" alt="Маруся">
 					</a>
 					<div class="card-footer">
-						<a href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>" class="btn btn-primary center">В корзину</a>
+						<a href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>" class="btn btn-primary">В корзину</a>
+						<a href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>" class="btn btn-primary">Убрать из корзны все товары</a>
 					</div>
 				</div>
 			</div>

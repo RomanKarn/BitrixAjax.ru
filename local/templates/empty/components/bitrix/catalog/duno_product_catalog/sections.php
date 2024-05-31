@@ -14,6 +14,40 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 
 $this->setFrameMode(true);
+?>
+<?
+$APPLICATION->IncludeComponent(
+	"bitrix:catalog.smart.filter",
+	"duno_smart_filter_product_catalog",
+	array(
+		"CACHE_GROUPS" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"DISPLAY_ELEMENT_COUNT" => "Y",
+		"FILTER_NAME" => "arrFilterDuno",
+		"FILTER_VIEW_MODE" => "vertical",
+		"IBLOCK_ID" => "7",
+		"IBLOCK_TYPE" => "catalog",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"POPUP_POSITION" => "left",
+		"PREFILTER_NAME" => "smartPreFilter",
+		"SAVE_IN_SESSION" => "N",
+		"SECTION_CODE" => "",
+		"SECTION_CODE_PATH" => "",
+		"SECTION_DESCRIPTION" => "-",
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_TITLE" => "-",
+		"SEF_MODE" => "N",
+		"SEF_RULE" => "",
+		"SMART_FILTER_PATH" => "",
+		"TEMPLATE_THEME" => "blue",
+		"XML_EXPORT" => "N"
+	),
+	$component,
+	array('HIDE_ICONS' => 'Y')
+);
+?>
+<?
 $sectionListParams = array(
 	"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 	"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -62,7 +96,7 @@ unset($sectionListParams);
 			"SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
 			"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
 			"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-			"FILTER_NAME" => $arParams["FILTER_NAME"],
+			"FILTER_NAME" =>  "arrFilterDuno",
 			"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 			"CACHE_TIME" => $arParams["CACHE_TIME"],
 			"CACHE_FILTER" => $arParams["CACHE_FILTER"],

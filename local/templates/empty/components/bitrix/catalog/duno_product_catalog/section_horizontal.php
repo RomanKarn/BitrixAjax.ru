@@ -18,42 +18,38 @@ if (isset($arParams['USE_COMMON_SETTINGS_BASKET_POPUP']) && $arParams['USE_COMMO
 }
 ?>
 
-<? if ($isFilter) : ?>
-	<div class="col-xs-12<?= (isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '') ?>">
-		<?
-		$APPLICATION->IncludeComponent(
-			"bitrix:catalog.smart.filter",
-			"",
-			array(
-				"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-				"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-				"SECTION_ID" => $arCurSection['ID'],
-				"FILTER_NAME" => $arParams["FILTER_NAME"],
-				"PRICE_CODE" => $arParams["~PRICE_CODE"],
-				"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-				"CACHE_TIME" => $arParams["CACHE_TIME"],
-				"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-				"SAVE_IN_SESSION" => "N",
-				"FILTER_VIEW_MODE" => $arParams["FILTER_VIEW_MODE"],
-				"XML_EXPORT" => "N",
-				"SECTION_TITLE" => "NAME",
-				"SECTION_DESCRIPTION" => "DESCRIPTION",
-				'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
-				"TEMPLATE_THEME" => $arParams["TEMPLATE_THEME"],
-				'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
-				'CURRENCY_ID' => $arParams['CURRENCY_ID'],
-				"SEF_MODE" => $arParams["SEF_MODE"],
-				"SEF_RULE" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["smart_filter"],
-				"SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
-				"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-				"INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
-			),
-			$component,
-			array('HIDE_ICONS' => 'Y')
-		);
-		?>
-	</div>
-<? endif ?>
+<?
+$APPLICATION->IncludeComponent(
+	"bitrix:catalog.smart.filter",
+	"duno_smart_filter_product_catalog",
+	array(
+		"CACHE_GROUPS" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"DISPLAY_ELEMENT_COUNT" => "Y",
+		"FILTER_NAME" => "arrFilterDuno",
+		"FILTER_VIEW_MODE" => "vertical",
+		"IBLOCK_ID" => "7",
+		"IBLOCK_TYPE" => "catalog",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"POPUP_POSITION" => "left",
+		"PREFILTER_NAME" => "smartPreFilter",
+		"SAVE_IN_SESSION" => "N",
+		"SECTION_CODE" => "",
+		"SECTION_CODE_PATH" => "",
+		"SECTION_DESCRIPTION" => "-",
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_TITLE" => "-",
+		"SEF_MODE" => "N",
+		"SEF_RULE" => "",
+		"SMART_FILTER_PATH" => "",
+		"TEMPLATE_THEME" => "blue",
+		"XML_EXPORT" => "N"
+	),
+	$component,
+	array('HIDE_ICONS' => 'Y')
+);
+?>
 <?
 $sectionListParams = array(
 	"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
@@ -110,7 +106,7 @@ $intSectionID = $APPLICATION->IncludeComponent(
 		"SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
 		"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
 		"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-		"FILTER_NAME" => $arParams["FILTER_NAME"],
+		"FILTER_NAME" => "arrFilterDuno",
 		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 		"CACHE_TIME" => $arParams["CACHE_TIME"],
 		"CACHE_FILTER" => $arParams["CACHE_FILTER"],
