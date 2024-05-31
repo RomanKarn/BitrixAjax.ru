@@ -23,7 +23,7 @@ $this->setFrameMode(true);
 					<a href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>"><img class="card-img-top" src="<?= $arItem["PREVIEW_PICTURE"]["SRC"] ?? "" ?>" alt="Тираннозавр"></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a href="dinosaur-item.html"><?= $arItem["NAME"] ?? "" ?></a>
+							<a href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>"><?= $arItem["NAME"] ?? "" ?></a>
 						</h4>
 						<p class="card-text"><?= $arItem["PREVIEW_TEXT"] ?? "" ?></p>
 					</div>
