@@ -89,6 +89,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 									<a class="dropdown-item" href="/auth/personal.php">Личный кабинет</a>
+									<a class="dropdown-item" href="/auth/basket/">Корзина</a>
+									
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/?logout=yes&<?= bitrix_sessid_get() ?>">Выйти</a> <!-- почему это работет -->
 								</div>

@@ -32,13 +32,21 @@ $this->setFrameMode(true);
 		<h3 class="my-3"><?= $arResult["NAME"] ?? "" ?></h3>
 		<p><?= $arResult["PREVIEW_TEXT"] ?? "" ?></p>
 		<h4>Цена:<?= $arResult["PRICES"]["PRISE"]["VALUE"]  ?? "" ?> руб.</h4>
-		<div class="card-footer">
-			<a href="" class="btn btn-primary ">Добавить в корзину</a>
-			<a href="" class="btn btn-primary ">Убрать все</a>
-			<div class="my-3 ">
-				<a href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>" class="btn btn-primary">-</a>
-				<samp class="btn btn-primary">5</samp>
-				<a href="" class="btn btn-primary">+</a>
+		<div data-id="<?= $arResult["ID"] ?? "" ?>" class="card-footer cardbascet">
+			<a href="javascript:;" class="btn btn-primary bascet addnew <?= !empty($arParams["BASKET"]) ? ((array_search($arResult["ID"], array_column($arParams["BASKET"], 0)) !== false) ? "d-none" : "") : ""  ?>">Добавить в корзину</a>
+			<a href="javascript:;" class="btn btn-primary  bascet delall <?= !empty($arParams["BASKET"]) ? ((array_search($arResult["ID"], array_column($arParams["BASKET"], 0)) !== false) ? "" : "d-none") : "d-none"  ?>">Убрать все</a>
+			<div data-id="<?= $arResult["ID"] ?? "" ?>" class="plusminus my-3 <?= !empty($arParams["BASKET"]) ? ((array_search($arResult["ID"], array_column($arParams["BASKET"], 0)) !== false) ? "" : "d-none") : "d-none"  ?>">
+				<a href="javascript:;" class="btn btn-primary bascet minus">-</a>
+				<samp class="btn btn-primary bascet coll">
+					<?
+					if (!empty($arParams["BASKET"])) {
+						$idItemBasket = array_search($arResult["ID"], array_column($arParams["BASKET"], 0));
+						if ($idItemBasket !== false)
+							echo $countItemsProductInBasket = $arParams["BASKET"][$idItemBasket][1];
+					}
+					?>
+				</samp>
+				<a href="javascript:;" class="btn btn-primary bascet plus">+</a>
 			</div>
 		</div>
 	</div>
