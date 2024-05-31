@@ -31,8 +31,16 @@ $this->setFrameMode(true);
 	<div class="col-md-4">
 		<h3 class="my-3"><?= $arResult["NAME"] ?? "" ?></h3>
 		<p><?= $arResult["PREVIEW_TEXT"] ?? "" ?></p>
-		<h4 >Цена:<?= $arResult["PRICES"]["PRISE"]["VALUE"]  ?? "" ?> руб.</h4>
-		<a  href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>" class="btn btn-primary center my-4">В корзину</a>
+		<h4>Цена:<?= $arResult["PRICES"]["PRISE"]["VALUE"]  ?? "" ?> руб.</h4>
+		<div class="card-footer">
+			<a href="" class="btn btn-primary ">Добавить в корзину</a>
+			<a href="" class="btn btn-primary ">Убрать все</a>
+			<div class="my-3 ">
+				<a href="<?= $arItem["DETAIL_PAGE_URL"] ?? "" ?>" class="btn btn-primary">-</a>
+				<samp class="btn btn-primary">5</samp>
+				<a href="" class="btn btn-primary">+</a>
+			</div>
+		</div>
 	</div>
 	<hr>
 
